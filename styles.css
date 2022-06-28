@@ -169,3 +169,10 @@ body {
   .bolded {
     font-weight: bold;
   }
+
+  .classic {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    transform: translate(-100%, -0%);
+  }
