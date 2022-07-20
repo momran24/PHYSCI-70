@@ -6,7 +6,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script> 
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
   <h2 style="border-color: white; width: fit-content; margin: auto;">Mustafa Omran: <span class="bolded"><em>3D Printing & Design</em></span></h2>
   <br>
   <br>
@@ -23,40 +22,30 @@
 
 
 <body>
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="index.html">Index</a>
-    <br>
-    <a href="2D_design.html">2D Design & Cutting</a>
-    <br>
-    <a href="elec&tools.html">Electronics and Tools</a>
-    <br>
-    <a href="microcontroller.html">Microcontroller Programming</a>
-    <br>
-    <a href="elecInput.html">Electronic Input Devices</a>
-    <br>
-    <a href="elecOutput.html">Electronic Output Devices</a>
-    <br>
-    <a href="cnc.html">CNC Milling, Molding, & Casting</a>
-    <br>
-    <a href="iot.html">Internet of Things (IoT)</a>
-    <br>
-    <a href="finalproject.html">Final Project</a>
-    <br>
-    <a href="aboutme.html">About Me</a>
-</div>
-
-
-
-<script>
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "500px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-</script>
+  <content>
+    <input id="hamburger" class="hamburger" type="checkbox"/>
+    <label class="hamburger" for="hamburger">
+      <i></i>
+      <text>
+        <close>close</close>
+        <open>menu</open>
+      </text>
+    </label>
+    <section class="drawer-list">
+        <ul>
+            <li><a href="index.html">Home</a></li><br>
+            <li><a href="2D_design.html"><b>2:</b> 2D Design & Cutting</a></li><br>
+            <li><a href="elec&tools.html"><b>3:</b> Electronics & Tools</a></li><br>
+            <li><a href="microcontroller.html"><b>4:</b> Microcontroller Programming</a></li><br>
+            <li><a href="3D_design.html"><b>5:</b> 3D Design & Printing</a></li><br>
+            <li><a href="elecInput.html"><b>6:</b> Electronic Input Devices</a></li><br>
+            <li><a href="elecOutput.html"><b>7:</b> Electronic Output Devices</a></li><br>
+            <li><a href="cnc.html"><b>8:</b> CNC Milling, Molding, & Casting</a></li><br>
+            <li><a href="iot.html"><b>9:</b> Internet of Things (IoT)</a></li><br>
+            <li><a href="aboutme.html">About</a></li>
+        </ul>
+    </section>
+</content>
 <xmp theme="journal" style="display:none;">
   <h3><b>3D Printing</b></h3>
   <h5>For this week's assignement, students had to either create or find a 3D Design and print it using our class' collection of 3D printers. My initial idea was to 3D print a phone stand. However, after modeling in Fusion 360 and exporting my design to PrusaSlicer as a STL file and attempting to make some changes in order to satisfy the time limit, I was able to get it down from 11 hours to 4 hours. Which while impressive, is still too long for this assignment!</h5>

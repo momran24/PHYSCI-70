@@ -6,7 +6,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script> 
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
   <h2 style="border-color: white; width: fit-content; margin: auto;">Mustafa Omran: <span class="bolded"><em>Microcontroller Programming</em></span></h2>
   <br>
   <br>
@@ -23,40 +22,30 @@
 
 
 <body>
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="index.html">Index</a>
-    <br>
-    <a href="2D_design.html">2D Design & Cutting</a>
-    <br>
-    <a href="elec&tools.html">Electronics and Tools</a>
-    <br>
-    <a href="3D_design.html">3D Design & Printing</a>
-    <br>
-    <a href="elecInput.html">Electronic Input Devices</a>
-    <br>
-    <a href="elecOutput.html">Electronic Output Devices</a>
-    <br>
-    <a href="cnc.html">CNC Milling, Molding, & Casting</a>
-    <br>
-    <a href="iot.html">Internet of Things (IoT)</a>
-    <br>
-    <a href="finalproject.html">Final Project</a>
-    <br>
-    <a href="aboutme.html">About Me</a>
-</div>
-
-
-
-<script>
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "500px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-</script>
+  <content>
+    <input id="hamburger" class="hamburger" type="checkbox"/>
+    <label class="hamburger" for="hamburger">
+      <i></i>
+      <text>
+        <close>close</close>
+        <open>menu</open>
+      </text>
+    </label>
+    <section class="drawer-list">
+        <ul>
+            <li><a href="index.html">Home</a></li><br>
+            <li><a href="2D_design.html"><b>2:</b> 2D Design & Cutting</a></li><br>
+            <li><a href="elec&tools.html"><b>3:</b> Electronics & Tools</a></li><br>
+            <li><a href="microcontroller.html"><b>4:</b> Microcontroller Programming</a></li><br>
+            <li><a href="3D_design.html"><b>5:</b> 3D Design & Printing</a></li><br>
+            <li><a href="elecInput.html"><b>6:</b> Electronic Input Devices</a></li><br>
+            <li><a href="elecOutput.html"><b>7:</b> Electronic Output Devices</a></li><br>
+            <li><a href="cnc.html"><b>8:</b> CNC Milling, Molding, & Casting</a></li><br>
+            <li><a href="iot.html"><b>9:</b> Internet of Things (IoT)</a></li><br>
+            <li><a href="aboutme.html">About</a></li>
+        </ul>
+    </section>
+</content>
 <xmp theme="journal" style="display:none;">
 <h5>This week's unit on microcontrollers was the first time I ever had an experiance with microcontrollers. I do, however, have quite a lot of experiance with C/C++. It was really fun seeing what these tiny computers could do with what was basically directing to different places at different times.</h5>
 <hr><br>
@@ -65,7 +54,7 @@
 <br><br><h5>As a class, we then moved on to programming a motor with a L9110 motor driver which had 2 pins (GND, VCC) connected the arduino board's power GND and Vin. Finally, the L9110's A1A and A1B were connected to the arduino's pin 3 and 4 as these pins could do something called Pulse Width Modulation (PWM)</h5>
 <video controls muted width="400">
   <source src="images/Microcontrollers/IMG_3430.mp4" type="video/mp4">
- </video> <br><h4>PWM</h4>
+ </video> <br><br><h4>PWM</h4>
 <h6>Pulse-width modulation (PWM) is a method of reducing the average power delivered by an electrical signal, by effectively chopping it up into discrete parts. The average value of voltage (and current) fed to the load is controlled by turning the switch between supply and load on and off at a fast rate. The longer the switch is on compared to the off periods, the higher the total power supplied to the load.</h6>
 <img src="images/Microcontrollers/PWM.png" alt="PWM">
 <br><br><hr style="border-top: dotted 3px;"><br><br>

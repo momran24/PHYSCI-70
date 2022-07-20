@@ -1,38 +1,47 @@
-<body>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="styles.css">
-      </head>
-      <body>
-      
-      <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.html">Index</a>
-        <a href="week1.html">Week 1</a>
-        <a href="week2.html">Week 2</a>
-        <a href="week3.html">Week 3</a>
-        <a href="week4.html">Week 4</a>
-        <a href="week5.html">Week 5</a>
-        <a href="week6.html">Week 6</a>
-        <a href="week7.html">Week 7</a>
-      </div>
-      
-      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
-      
-      <script>
-      function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-      }
-      
-      function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-      }
-      </script>
-         
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+        <h2 style="border-color: white; width: fit-content; margin: auto;">Mustafa Omran: <span class="bolded"><em>Electronic Output Devices</em></span></h2>
+        <br>
+        <br>
+        <br>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+  <body>
+  <input id="hamburger" class="hamburger" type="checkbox"/>
+  <label class="hamburger" for="hamburger">
+    <i></i>
+    <text>
+      <close>close</close>
+      <open>menu</open>
+    </text>
+  </label>
+  <section class="drawer-list">
+        <ul>
+          <li><a href="index.html">Home</a></li><br>
+          <li><a href="2D_design.html"><b>2:</b> 2D Design & Cutting</a></li><br>
+          <li><a href="elec&tools.html"><b>3:</b> Electronics & Tools</a></li><br>
+          <li><a href="microcontroller.html"><b>4:</b> Microcontroller Programming</a></li><br>
+          <li><a href="3D_design.html"><b>5:</b> 3D Design & Printing</a></li><br>
+          <li><a href="elecInput.html"><b>6:</b> Electronic Input Devices</a></li><br>
+          <li><a href="elecOutput.html"><b>7:</b> Electronic Output Devices</a></li><br>
+          <li><a href="cnc.html"><b>8:</b> CNC Milling, Molding, & Casting</a></li><br>
+          <li><a href="iot.html"><b>9:</b> Internet of Things (IoT)</a></li><br>
+          <li><a href="aboutme.html">About</a></li><br>
+      </ul>
+
+      <br><br><br>
+      <p style="text-align: right;">&copy; 2022 Mustafa Omran</p>
     </body>
 
-    <script>
-      $(".animation").delay(100).animate({ opacity: 1 }, 700);
-      $(".animation-2").delay(1000).animate({ opacity: 1 }, 700);
-    </script>
-  </body>
+
+    </html>
