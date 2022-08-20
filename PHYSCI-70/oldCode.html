@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <link href="css/style.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div align="center">
+            <br><br>
+            <button><a href="elecOutput.html">Go Back</a></button>
+            <br><br>
+        </div>
+        <pre><code class="language-arduino">
+                #include Adafruit_NeoPixel.h
+    
+                #define LED_PIN 5 // Defines the pin where the LED is connected
+                
+                #define LED_COUNT 7 // Defines the number of LEDs on the strip
+                
+                Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800); // Initializes the LED strip
+                
+                const int sampleWindow = 50; // Variables for the Microphone
+                unsigned int sample;
+                
+                void setup() {
+                    strip.begin(); // Signals to the LED strip to start by tuning off all the LEDs
+                    strip.show(); // Applies previous command to LED strip
+                    Serial.begin(9600); // Establishes a 9600 bit/second rate of transfer for microphone
+                }
+                
+                void loop() {
+                    unsigned long startMillis= millis(); // 19-37 is for Microphone readings
+                    unsigned int peakToPeak = 0;
+                
+                    unsigned int signalMax = 0;
+                    unsigned int signalMin = 1024;
+                
+                    while (millis() - startMillis < sampleWindow)
+                    {
+                        sample = analogRead(0);
+                        if (sample < 1024)
+                        {
+                            if (sample > signalMax) {
+                                signalMax = sample;
+                            } else if (sample < signalMin) {
+                                signalMin = sample;
+                            }
+                        }
+                    }
+                    peakToPeak = signalMax - signalMin;
+                
+                    if (peakToPeak >= 10) {                    // If Microphone detects a signal above 10, the LED strip turns on
+                        strip.setPixelColor(3,255,255,255);    // Initial white DRL with beginning animation
+                        strip.show();
+                        delay(75);
+                
+                        strip.setPixelColor(4,255,255,255);
+                        strip.setPixelColor(2,255,255,255);
+                        strip.show();
+                        delay(75);
+                
+                        strip.setPixelColor(5,255,255,255);
+                        strip.setPixelColor(1,255,255,255);
+                        strip.show();
+                        delay(75);
+                
+                        strip.setPixelColor(6,255,255,255);
+                        strip.setPixelColor(0,255,255,255);
+                        strip.show();
+                
+                        delay(250);
+                        
+                        for (int i = 0; i < 7; i++) {
+                            strip.setPixelColor(a,255,255,255);
+                            strip.show();
+                        }
+                
+                        delay(5000);
+                        strip.clear();
+                        strip.show();                      // Left and Right Turn Signals
+                
+                        for (int i = 0; i < 3; i++) {
+                            strip.setPixelColor(3,0,0,0);
+                            strip.show();
+                            delay(100);
+                
+                            strip.setPixelColor(3,255,255,0);
+                            strip.show();
+                            delay(100);
+                
+                            strip.setPixelColor(2,255,255,0);
+                            strip.show();
+                            delay(100);
+                
+                            strip.setPixelColor(1,255,255,0);
+                            strip.show();
+                            delay(100);
+                
+                            strip.setPixelColor(0,255,255,0);
+                            strip.show();
+                            delay(100);
+                
+                            strip.clear();
+                            strip.show();
+                        }
+                
+                        for (int i = 0; i < 3; i++) {
+                            strip.setPixelColor(3,0,0,0);
+                            strip.show();
+                            delay(100);
+                
+                            strip.setPixelColor(3,255,255,0);
+                            strip.show();
+                            delay(100);
+                
+                            strip.setPixelColor(4,255,255,0);
+                            strip.show();
+                            delay(100);
+                
+                            strip.setPixelColor(5,255,255,0);
+                            strip.show();
+                            delay(100);
+                
+                            strip.setPixelColor(6,255,255,0);
+                            strip.show();
+                            delay(100);
+                
+                            strip.clear();
+                            strip.show();
+                        }
+                                                        // Brake Lights
+                        strip.setPixelColor(0,255,0,0);
+                        strip.show();
+                
+                        strip.setPixelColor(1,255,0,0);
+                        strip.show();
+                
+                        strip.setPixelColor(2,255,0,0);
+                        strip.show();
+                
+                        strip.setPixelColor(3,255,0,0);
+                        strip.show();
+                
+                        strip.setPixelColor(4,255,0,0);
+                        strip.show();
+                
+                        strip.setPixelColor(5,255,0,0);
+                        strip.show();
+                
+                        strip.setPixelColor(6,255,0,0);
+                        strip.show();
+                
+                        delay(5000);
+                                                        //Ending Lights with animation
+                        strip.setPixelColor(6,0,0,0);
+                        strip.setPixelColor(0,0,0,0);
+                        strip.show();
+                        delay(75);
+                
+                        strip.setPixelColor(5,0,0,0);
+                        strip.setPixelColor(1,0,0,0);
+                        strip.show();
+                        delay(75);
+                
+                
+                        strip.setPixelColor(4,0,0,0);
+                        strip.setPixelColor(2,0,0,0);
+                        strip.show();
+                        delay(75);
+                
+                        strip.setPixelColor(3,0,0,0);
+                        strip.show();
+                        delay(75);
+                
+                
+                        strip.clear();
+                        strip.show();
+                        
+                        strip.setPixelColor(0,255,0,0);
+                        strip.show();
+                            
+                        strip.setPixelColor(1,255,0,0);
+                        strip.show();
+                
+                        strip.setPixelColor(2,255,0,0);
+                        strip.show();
+                        
+                        strip.setPixelColor(3,255,0,0);
+                        strip.show();
+                        
+                        strip.setPixelColor(4,255,0,0);
+                        strip.show();
+                
+                        strip.setPixelColor(c,255,0,0);
+                        strip.show();
+                
+                        strip.setPixelColor(6,255,0,0);
+                        strip.show();
+                
+                        strip.setPixelColor(6,0,0,0);
+                        strip.setPixelColor(0,0,0,0);
+                        strip.show();
+                        delay(75);
+                
+                        strip.setPixelColor(5,0,0,0);
+                        strip.setPixelColor(1,0,0,0);
+                        strip.show();
+                        delay(75);
+                
+                
+                        strip.setPixelColor(4,0,0,0);
+                        strip.setPixelColor(2,0,0,0);
+                        strip.show();
+                        delay(75);
+                
+                        strip.setPixelColor(3,0,0,0);
+                        strip.show();
+                        delay(75);
+                
+                
+                        strip.clear();
+                        strip.show();
+                    }
+                    Serial.println(peakToPeak);
+                }
+        </code></pre>
+    </body>
+</html>
