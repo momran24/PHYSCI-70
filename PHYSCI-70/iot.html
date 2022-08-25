@@ -47,36 +47,37 @@
         </ul>
     </section>
 </content>
+<xmp theme="journal" style="display:none;">
 <h5>I always heard the term "IoT" before but I never quite fully understood what it really meant. According to Google, "The Internet of Things (IoT) describes the network of physical objects". But what does that really mean? This meant that this week's assignment on internet of things was really the first time I got to learn about this topic. </h5>
 <hr><br>
 <h5>First, lets explain what IoT is. Say you have a security camera. You want to have the piece of mind knowing that the area you placed said camera is monitorable from anywhere, anytime. But how does it do that? At the end of the day, a camera is just a bunch of pixels that capture light housed in a plastic box. How could you, the user, access said piece of electronic mixture? There comes IoT! By connecting a security camera to a connection, we can access this connection from anywhere! IoT boils down to stuff connected to each other.</h5>
 <br><h5>Speaking of which, for this week's assignment, I wanted to make a security camera that would monitor my room when I'm not home because...siblings. </h5>
 <br><hr><br><h5>I first started by <a  target="_blank" href="https://randomnerdtutorials.com/esp32-cam-video-streaming-face-recognition-arduino-ide/#:~:text=The%20ESP32%2DCAM%20is%20a,files%20to%20serve%20to%20clients." style="color: #0645AD">this tutorial</a> which went on to explain how the ESP32-CAM even works and how to wire it up. On my quest, I learned that since the ESP32<u>-CAM</u> doesn't have any type of input to be connected and controlled by a computer. To solve that issue, the tutorial recommended that I use something called a FTDI board. This board woud go on to serve as a kind of USB to ESP32-CAM adapter that would allow me to do things like upload some code. After uploading the code I was able to make this!</h5> <h6>*The arduino serves no purpose. My brilliant mind glued it to the only breadboard I had for another assignment 🤦</h5>
-<br><img src="images/IoT/IMG_0342.jpg" width="400" alt="ESP32-CAM working">
-<img src="images/IoT/IMG_0149.jpg" width="400" alt="Camera Setup">
-<img src="images/IoT/IMG_0144.jpg" width="400" alt="Camera Setup">
+<br><img src="../images/IoT/IMG_0342.jpg" width="400" alt="ESP32-CAM working">
+<img src="../images/IoT/IMG_0149.jpg" width="400" alt="Camera Setup">
+<img src="../images/IoT/IMG_0144.jpg" width="400" alt="Camera Setup">
 <h5>I set it up to monitor my house's front entrance</h5>
 <video width="600" controls>  
-  <source src="images/IoT/esp-cam1.mp4" type="video/mp4">
+  <source src="../images/IoT/esp-cam1.mp4" type="video/mp4">
 </video>
 <br><br><h3>Circuit & Pinout</h3>
-<img src="images/IoT/ESP32-CAM-pinout-1.png" width="400" alt="">
-<img src="images/iot/ESP32-CAM-FTDI-programmer-5V-supply.png" width="400" alt="">
+<img src="../images/IoT/ESP32-CAM-pinout-1.png" width="400" alt="">
+<img src="../images/iot/ESP32-CAM-FTDI-programmer-5V-supply.png" width="400" alt="">
 <br><hr style="border-top: dotted 5px;"><br><h5>Done? That's not how it works over here. As an upgrade to the previous system, I initially wanted to set up a web server that would allow me to access video footage from anywhere in the world. However, after looking trying multiple times and following different tutorials, I wasn't able to make it work. I experimented with pyro/motion sensors in order to make it so if motion was detected, a video would be recorded but the pyro sensors either had VERY limited range or they were buggy. Which added on top of the face that I wouldn't be able to test them because of the constant, unavoidable movement that was happening in my areas of work.</h5>
 <br><h5>Since my final project idea is a self-driving car, it was crucial for me to be comfortable with ultrasonic sensors. I attached an HC-SR04 to a breadboard that was connected to a regular ESP32.</h5>
 <br><h3>Circuit</h3>
 <!-- Image of Circuit -->
 <br>
 <h5>Which turned out to this: </h5>
-<img src="images/IoT/IMG_0359.jpg" width="400" alt="Ultrasonic Sensor Setup">
-<img src="images/IoT/IMG_0360.jpg" width="400" alt="Ultrasonic Sensor Setup Back">
+<img src="../images/IoT/IMG_0359.jpg" width="400" alt="Ultrasonic Sensor Setup">
+<img src="../images/IoT/IMG_0360.jpg" width="400" alt="Ultrasonic Sensor Setup Back">
 <br><br><h5>I went on to attaching the setup a wall right in front of my door in order to make the ultrasonic sensor pointed at said door. I then measured the distance between the sensor and the <u>closed</u> door. This meant that if the door was opened, the distance the HC-SR04 would pick up, would be less than it was before. Here's an example with a shorter distance using my hand. Every time my hand reaches gets closer than the "authorized" distance, it triggers the LED to turn on</h5>
 <video width="400" controls>
-  <source src="images/IoT/IMG_0351.MOV.mp4" type="video/mp4">
+  <source src="../images/IoT/IMG_0351.MOV.mp4" type="video/mp4">
 </video>
 <br><br><h5>While I'm really happy with this, I really wanted to be able to access it from anywhere. While that wasn't possible, I found another solution inspired by <a href="https://tomkinsc.github.io/harvard-ps70/" style="color: #0645AD" target="_blank">Chris Tomkins-Tinch's smart freezer example</a>. Since the ESP32 can connect to Wi-Fi, it is amazingly able to send emails. I followed <a href="https://randomnerdtutorials.com/esp32-send-email-smtp-server-arduino-ide/#:~:text=To%20send%20emails%20with%20the%20ESP32%2C%20we'll%20use%20the,email%20with%20and%20without%20attachments." style="color: #0645AD" target="_blank">this tutorial</a> on how to send an email using an SMTP server. After a great success, I used advantage of something U.S and Canadian carriers do called <a href="https://en.wikipedia.org/wiki/SMS_gateway#Email_clients">E-mail to SMS Gateways</a> these gateways allow for someone to send an email to any carrier which would then go on to be forwarded to a number using SMS. For example, if I sent an email to <b>XXXXXX2722@vtext.com</b> (number blurred out for obvious privacy reasons) I would recieve whatever was sent in that email as a text message</h5>
 <video width="500" controls>
-  <source src="images/IoT/Untitled.mp4" type="video/mp4">
+  <source src="../images/IoT/Untitled.mp4" type="video/mp4">
 </video>
 <br><br>
 <h3>Code</h3>
@@ -240,13 +241,14 @@ void smtpCallback(SMTP_Status status){
 <br><h4>Here's my Final Result</h4>
 <h6>*I sincerly apologize for getting a bit too carried away</h6>
 <video width="600" controls>
-  <source src="images/IoT/EvilMustafa.mp4" type="video/mp4">
+  <source src="../images/IoT/EvilMustafa.mp4" type="video/mp4">
 </video>
 <br><br><br>
 <p style="text-align: right;">&copy; 2022 Mustafa Omran</p>
+</xmp>
 </body>
 
-<script src="https://strapdownjs.com/v/0.2/strapdown.js"></script>
+<script src="https://nathanmelenbrink.github.io/lab/js/strapdown.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
 
 </html>
